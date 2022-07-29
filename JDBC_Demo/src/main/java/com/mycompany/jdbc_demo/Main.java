@@ -14,7 +14,10 @@ public class Main {
         Connection connection = ContactsProgram.getServerConnection();
         
         // Demo for inserting a row.
-        ContactsProgram.demo_addNewRow(connection);
+        //ContactsProgram.demo_addNewRow(connection);
+        
+        // Insertion demo with PreparedStatement.
+        ContactsProgram.demo_insertionWithPreparedStatement(connection);
         
         try {
             connection.close();

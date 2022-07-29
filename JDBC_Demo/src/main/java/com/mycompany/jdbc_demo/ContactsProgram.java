@@ -2,8 +2,9 @@ package com.mycompany.jdbc_demo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -65,5 +66,27 @@ public class ContactsProgram {
             System.out.println("A new contact has been inserted.");
         
     } // End of demo_addNewRow method.
+    
+    public static void 
+                    demo_insertionWithPreparedStatement(Connection connection) {
+    
+    String sql = "INSERT INTO contacts (first_name, last_name, email) "
+               + "VALUES (?, ?, ?)";
+    
+    try {
+    
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        // Now we insert the values for the columns dynamically.
+
+        statement.setString(1, "John");
+        statement.setString(2, "Doe");
+        statement.setString(3, "john.doe@gmail.com");
+        
+        statement.executeUpdate();
+        
+    } catch (SQLException e) { System.out.println(e.getMessage()); }
+                        
+    } // End of demo_insertionWithPreparedStatement method.
     
 } // End of ContactsProgram.

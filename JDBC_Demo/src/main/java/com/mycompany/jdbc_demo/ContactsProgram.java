@@ -3,6 +3,7 @@ package com.mycompany.jdbc_demo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -41,5 +42,28 @@ public class ContactsProgram {
         return connection;
         
     } // End of getServerConnection method.
+    
+    public static void demo_addNewRow(Connection connection) {
+        
+        // Note: Don't need to specify 'id' as it is recognized automatically by
+        // the database.
+        String sql = "INSERT INTO contacts (first_name, last_name, email)"
+                   + "VALUES ('Ravi', 'Kumar', 'ravi.kumar2020@gmail.com')";
+        
+        Integer rowCount = null; // The row count (will be used to see if the
+                                 // row count went up from 0, indicating that we
+                                 // successfully added the row.
+        
+        try {
+            Statement statement = connection.createStatement();
+            rowCount = statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        if (rowCount > 0)
+            System.out.println("A new contact has been inserted.");
+        
+    } // End of demo_addNewRow method.
     
 } // End of ContactsProgram.

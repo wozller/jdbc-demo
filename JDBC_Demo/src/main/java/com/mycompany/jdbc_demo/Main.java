@@ -13,6 +13,9 @@ public class Main {
         
         Connection connection = ContactsProgram.getServerConnection();
         
+        // Demo for inserting a row.
+        ContactsProgram.demo_addNewRow(connection);
+        
         try {
             connection.close();
             System.out.println("Connection closed!");

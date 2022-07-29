@@ -17,7 +17,10 @@ public class Main {
         //ContactsProgram.demo_addNewRow(connection);
         
         // Insertion demo with PreparedStatement.
-        ContactsProgram.demo_insertionWithPreparedStatement(connection);
+        //ContactsProgram.demo_insertionWithPreparedStatement(connection);
+        
+        // Query demo.
+        ContactsProgram.demo_query(connection);
         
         try {
             connection.close();

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -89,4 +90,30 @@ public class ContactsProgram {
                         
     } // End of demo_insertionWithPreparedStatement method.
     
+    public static void demo_query(Connection connection) {
+        
+        String sql = "SELECT * FROM CONTACTS";
+        
+        try {
+        
+        Statement statement = connection.createStatement();
+        
+        ResultSet result = statement.executeQuery(sql);
+        
+        while (result.next()) {
+            
+            int id = result.getInt("id");
+            String firstName = result.getString("first_name");
+            String lastName = result.getString("last_name");
+            String email = result.getString("email");
+            
+            System.out
+                    .printf("%d, %s, %s, %s\n", id, firstName, lastName, email);
+            
+        } // End of while loop.
+        
+        } catch (SQLException e) { System.out.println(e.getMessage()); }
+        
+    } // End of demo_query method.
+                    
 } // End of ContactsProgram.

@@ -16,7 +16,7 @@ public class ContactsProgram {
     /**
      * Establishes a connection with the local PostgreSQL server, return a type
      * Connection object which we can then interact with elsewhere.
-     * @return 
+     * @return Connection object.
      */
     public static Connection getServerConnection() {
         
@@ -33,6 +33,7 @@ public class ContactsProgram {
         
         try {
             connection = DriverManager.getConnection(url, username, password);
+            System.out.println("Connected to server!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
